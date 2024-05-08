@@ -48,8 +48,9 @@ userRouter.post("/register", upload.single("avatar"), async (req, res) => {
 
     if (req.file) {
       // Upload avatar to Cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-      avatarUrl = result.secure_url;
+       avatarUrl = req.file ? (await cloudinary.uploader.upload(req.file.path)).secure_url : "";
+      //const result = await cloudinary.uploader.upload(req.file.path);
+     // avatarUrl = result.secure_url;
     }
 
     bcrypt.hash(password, 10, async (err, hash) => {
