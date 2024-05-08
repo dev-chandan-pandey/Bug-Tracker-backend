@@ -83,7 +83,7 @@ userRouter.post("/login", async (req, res) => {
         if (err) {
           res.status(500).send({ Error: err });
         } else if (result) {
-          const token = jwt.sign({ userID: user._id }, "nishant", {
+          const token = jwt.sign({ userID: user._id }, "chandan", {
             expiresIn: "1d",
           });
 
